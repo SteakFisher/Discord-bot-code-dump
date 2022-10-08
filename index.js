@@ -13,6 +13,16 @@ const client = new Discord.Client({
 
 const fs = require("fs");
 
+let url = `https://id.twitch.tv/oauth2/token?client_id=${clientId}&client_secret=${clientSecret}&grant_type=client_credentials`;
+
+    fetch(url, {
+        method: "POST",
+    })
+        .then((res) => res.json())
+        .then((json) => {
+            console.log(json);
+        });
+
 client.on("ready", () => {
     client.application.commands.create({
         name: 'send-embed',
